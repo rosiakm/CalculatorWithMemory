@@ -10,6 +10,11 @@ public class SimpleCalculatorWithMemory {
 
     public int add(int a){
         log.info("Memory state: {} | Adding: {}",memory, a);
+
+        if((a > 0 && memory > Integer.MAX_VALUE - a) ||
+           (a < 0 && memory < Integer.MIN_VALUE - a)){
+            throw new ArithmeticException("Integer overflow or underflow");
+        }
         memory = memory + a;
         log.info("Memory state after add: {}", memory);
         return memory;
@@ -17,6 +22,11 @@ public class SimpleCalculatorWithMemory {
 
     public int subtract(int a){
         log.info("Memory state: {} | Subtracting: {}",memory, a);
+
+        if((a > 0 && memory > Integer.MAX_VALUE - a) ||
+           (a < 0 && memory < Integer.MIN_VALUE - a)){
+            throw new ArithmeticException("Integer overflow or underflow");
+        }
         memory = memory - a;
         log.info("Memory state after subtract: {}", memory);
         return memory;
