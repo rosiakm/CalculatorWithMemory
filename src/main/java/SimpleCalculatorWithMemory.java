@@ -21,15 +21,7 @@ public class SimpleCalculatorWithMemory {
     }
 
     public int subtract(int a){
-        log.info("Memory state: {} | Subtracting: {}",memory, a);
-
-        long result = (long) memory - (long) a;
-
-        if((result > Integer.MAX_VALUE || result < Integer.MIN_VALUE)){
-            throw new ArithmeticException("Integer overflow or underflow");
-        }
-        memory = (int) result;
-        log.info("Memory state after subtract: {}", memory);
+        memory = add(-a);
         return memory;
     }
 
